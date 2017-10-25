@@ -10,7 +10,6 @@ int N, Q;
 int arr[50001], segmax[200001], segmin[200001];
 int querymin(int node, int l, int r, int a, int b)
 {
-      //  cout << "min node = " << segmax[node] << " left = " << l << " right = " << r << endl;
 	if(l > r) return 0;
 	if(l >= a && r <= b)
 	{
@@ -33,7 +32,6 @@ int querymin(int node, int l, int r, int a, int b)
 
 int querymax(int node, int l, int r, int a, int b)
 {
-//	cout << "max node = " << segmax[node] << " left = " << l << " right = " << r << endl;
 	if(l > r) return 0;
 	if(l >= a && r <= b)
 	{
@@ -44,13 +42,11 @@ int querymax(int node, int l, int r, int a, int b)
 	if(a <= mid)
 	{
 		int check = querymax(node*2, l, mid, a, b);
-		//int check = querymax(node*2, l, mid, a, b);
 		q = max(q, check);
 	}
 	if(b >= mid+1)
 	{
 		int check = querymax(node*2+1, mid+1, r, a, b);
-		//int check = querymax(node*2+1, mid, r, a, b);
 		q = max(q, check);
 	}
 	return q;
@@ -89,17 +85,14 @@ int main()
 	for(int i = 1; i <= N; i++)
 	{
 		cin >> arr[i];
-//		cout << "reading" << arr[i] << endl;
 	}
 	buildmin(1, 1, N);
 	buildmax(1, 1, N);
 	for(int i = 0; i < Q; i++)
 	{
 		int a, b; cin >> a >> b;
-		//cout << "this is a new query :" << a << " " << b << " " << endl;
 		int mi = querymin(1, 1, N, a, b);
 		int ma = querymax(1, 1, N, a, b);
-		//cout << "for this test case: min = " << mi << " and max = " << ma << endl;
 		cout << abs(mi-ma) << endl;
 	}
 }
