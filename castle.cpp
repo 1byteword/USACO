@@ -49,19 +49,16 @@ void dfs(int x, int y, int room)
 			dfs(x, y-1, room);
 		}
 	}
-
 	if(!wall(at, 2)){ //north
 		if(inb(x-1, y)){
 			dfs(x-1, y, room);
 		}
 	}
-
 	if(!wall(at, 4)){ //east
 		if(inb(x, y+1)){
 		       	dfs(x, y+1, room);
 		}
 	}
-
 	if(!wall(at, 8)){ //south
 		if(inb(x+1, y)){
 			dfs(x+1, y, room);
@@ -70,7 +67,6 @@ void dfs(int x, int y, int room)
 }
 
 void flood(){
-	
 	for(int i = 0; i < m; i++)
 	{
 		for(int j = 0; j < n; j++)
@@ -96,10 +92,9 @@ int main()
 			cin >> actual[i][j];
 		}
 	}
-
 	flood();
 	cout << room << endl;
-
+	
 	int lim = -1;
 	for(int i = 0; i < room; i++)
 	{
