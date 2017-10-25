@@ -23,7 +23,6 @@ int dfs(int node)
 	int circle = id[node];
 	for(int i : arr[node])
 	{
-		//cout << "source node: " << node << " and partner node: " << i;
 		if(id[i] == -1)
 		{
 			circle = min(circle, dfs(i));
@@ -37,7 +36,6 @@ int dfs(int node)
 	if(circle == id[node])
 	{
 		int count = 1;
-		//cout << "its working" << endl;
 		while(s.top() != node)
 		{	
 			id[s.top()] = 100000;
@@ -53,7 +51,6 @@ int dfs(int node)
 
 int main()
 {
-	//vector<int> starting_node;
 	ans = 0;
 	int N, M; cin >> N >> M;
 
@@ -61,11 +58,7 @@ int main()
 	{
 		int a, b; cin >> a >> b;
 		a--; b--;
-		//cout << a << " " << b << endl;
 		arr[a].push_back(b);
-		//assert(1 <= a && a <= N);
-        	//assert(1 <= b && b <= N);
-        	//assert(a != b);
 	}
 	for(int i = 0; i < N; i++)
 	{
@@ -75,7 +68,6 @@ int main()
 	for(int i = 0; i < N; i++)
 	{
 		if(id[i] != -1) continue;
-		//cout << "dfs of " << i << endl;
 		dfs(i);
 	}	
 	cout << ans << endl;
