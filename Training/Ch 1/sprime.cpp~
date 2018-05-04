@@ -1,0 +1,62 @@
+/** 
+     ID: azklinu1
+     LANG: C++11
+     PROG: sprime
+**/
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <vector>
+#include <bitset>
+#define pb push_back
+#define mp make_pair
+
+using namespace std;
+
+int upper, lower;
+bitset<1000000> b;
+void sieve()
+{
+	for(int i = 2; i < upper; i++)
+	{
+		for(int j = i*2; j < upper; j+=i)
+		{
+			b[j] = 0;
+		}
+	}
+}
+
+void genBounds(int N)
+{
+	upper = 10; lower = 1;
+	for(int i = 1; i < N; i++)
+	{
+		upper*=10;
+		lower*=10;
+	}
+}
+
+bool valid(int c)
+{
+	while(c > 0)
+	{
+		if(!b[c] || c == 1) return false;
+		c/=10;
+	}
+	return true;
+}
+
+int main()
+{
+	ifstream cin("sprime.in");
+	ofstream cout("sprime.out");
+	int N; cin >> N;
+	b.set(1);
+	genBounds(N);
+	sieve();
+	for(int i = lower; i < upper; i++)
+	{
+		if(valid(i)) cout << i << endl;
+	}
+}
+
